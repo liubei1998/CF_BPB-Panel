@@ -791,8 +791,10 @@ const getNormalConfigs = async (env, hostName, client) => {
     const Addresses = [
         hostName,
         'www.speedtest.net',
+	'ip.sb',
+	'time.is',
         ...resolved.ipv4,
-        ...resolved.ipv6.map((ip) => `[${ip}]`),
+        // ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(',') : [])
     ];
 
