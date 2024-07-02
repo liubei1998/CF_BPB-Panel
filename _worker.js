@@ -823,10 +823,10 @@ const getNormalConfigs = async (env, hostName, client) => {
 const generateRemark = (index, port) => {
     let remark = '';
     switch (index) {
-        case 0:
-        case 100:
-            remark = `💦 BPB - Domain_${index + 1} : ${port}`;
-            break;
+        // case 0:
+        // case 100:
+        //     remark = `💦 BPB - Domain_${index + 1} : ${port}`;
+        //     break;
         // case 2:
         // case 3:
         //     remark = `💦 BPB - IPv4_${index - 1} : ${port}`;
@@ -835,9 +835,9 @@ const generateRemark = (index, port) => {
         // case 5:
         //     remark = `💦 BPB - IPv6_${index - 3} : ${port}`;
         //     break;
-        // default:
-        //     remark = `💦 BPB - Clean IP_${index - 5} : ${port}`;
-        //     break;
+        default:
+            remark = `💦 BPB - Clean IP_${index + 1} : ${port}`;
+            break;
     }
 
     return remark;
