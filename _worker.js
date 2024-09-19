@@ -1115,7 +1115,7 @@ function generateRemark(index, port, protocol, fragType) {
     const type = fragType ? ' F' : '';
     switch (index) {
         case 0:
-        case 1:
+        case 10:
             remark = `💦${protocol}${type}-优选ip${index + 1} : ${port}`;
             break;
         // case 2:
@@ -3374,10 +3374,10 @@ async function getNormalConfigs(env, hostName, client) {
     const { cleanIPs, proxyIP, ports, vlessConfigs, trojanConfigs } = proxySettings;
     const resolved = await resolveDNS(hostName);
     const Addresses = [
-        hostName,
-        'www.speedtest.net',
-        ...resolved.ipv4,
-        ...resolved.ipv6.map((ip) => `[${ip}]`),
+        // hostName,
+        // 'www.speedtest.net',
+        // ...resolved.ipv4,
+        // ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(',') : [])
     ];
 
