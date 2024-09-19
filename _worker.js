@@ -1110,21 +1110,27 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 
-function generateRemark(index, cleanIPs, port, protocol, fragType) {
+function generateRemark(index, port, protocol, fragType) {
     let remark = '';
     const type = fragType ? ' F' : '';
-
-    // Calculate totalNodes based on the number of commas in cleanIPs
-    const totalNodes = cleanIPs.split(',').length;
-
-    // Calculate the node number in descending order based on the index and total nodes
-    const nodeNumber = totalNodes - index;
-
-    // Adjust the index-based remark accordingly if index is valid
-    if (index >= 0 && index < totalNodes) {
-        remark = `💦 ${protocol}${type} - Clean IP ${nodeNumber} : ${port}`;
+    
+    // Define a mapping for the required node order
+    const nodeOrder = [5, 4, 3, 2, 1];
+    
+    // Get the node number from the index based on the desired order
+    const nodeNumber = nodeOrder[index];
+    
+    // Adjust the index-based remark accordingly
+    switch (index) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+            remark = `💦 ${protocol}${type} - Clean IP ${nodeNumber} : ${port}`;
+            break;
     }
-
+    
     return remark;
 }
 
