@@ -1113,24 +1113,24 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
 function generateRemark(index, port, protocol, fragType) {
     let remark = '';
     const type = fragType ? ' F' : '';
-    
-    // Define a mapping for the required node order
-    const nodeOrder = [5, 4, 3, 2, 1];
-    
-    // Get the node number from the index based on the desired order
-    const nodeNumber = nodeOrder[index];
-    
-    // Adjust the index-based remark accordingly
     switch (index) {
         case 0:
         case 1:
+            remark = `💦 ${protocol}${type} - Domain ${index + 1} : ${port}`;
+            break;
         case 2:
         case 3:
+            remark = `💦 ${protocol}${type} - IPv4 ${index - 1} : ${port}`;
+            break;
         case 4:
-            remark = `💦 ${protocol}${type} - Clean IP ${nodeNumber} : ${port}`;
+        case 5:
+            remark = `💦 ${protocol}${type} - IPv6 ${index - 3} : ${port}`;
+            break;
+        default:
+            remark = `💦 ${protocol}${type} - Clean IP ${index - 5} : ${port}`;
             break;
     }
-    
+
     return remark;
 }
 
@@ -3374,10 +3374,10 @@ async function getNormalConfigs(env, hostName, client) {
     const { cleanIPs, proxyIP, ports, vlessConfigs, trojanConfigs } = proxySettings;
     const resolved = await resolveDNS(hostName);
     const Addresses = [
-        // hostName,
-        // 'www.speedtest.net',
-        // ...resolved.ipv4,
-        // ...resolved.ipv6.map((ip) => `[${ip}]`),
+        hostName,
+        'www.speedtest.net',
+        ...resolved.ipv4,
+        ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(',') : [])
     ];
 
