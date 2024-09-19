@@ -1115,20 +1115,13 @@ function generateRemark(index, port, protocol, fragType) {
     const type = fragType ? ' F' : '';
     switch (index) {
         case 0:
-        case 10:
-            remark = `💦${protocol}${type}-优选ip${index + 1} : ${port}`;
-            break;
-        // case 2:
-        // case 3:
-        //     remark = `💦 ${protocol}${type} - IPv4 ${index - 1} : ${port}`;
-        //     break;
-        // case 4:
-        // case 5:
-        //     remark = `💦 ${protocol}${type} - IPv6 ${index - 3} : ${port}`;
-        //     break;
-        // default:
-        //     remark = `💦 ${protocol}${type} - Clean IP ${index - 5} : ${port}`;
-        //     break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+	remark = `💦 ${protocol}${type} - Clean IP ${index - 5} : ${port}`;
+	break;
     }
 
     return remark;
