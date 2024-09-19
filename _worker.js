@@ -1110,7 +1110,7 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 
-function generateRemark(index) {
+function generateRemark(index, cleanIPs, port, protocol, fragType) {
     let remark = '';
     const type = fragType ? ' F' : '';
 
