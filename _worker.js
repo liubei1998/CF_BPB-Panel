@@ -3374,10 +3374,10 @@ async function getNormalConfigs(env, hostName, client) {
     const { cleanIPs, proxyIP, ports, vlessConfigs, trojanConfigs } = proxySettings;
     const resolved = await resolveDNS(hostName);
     const Addresses = [
-        hostName,
-        'www.speedtest.net',
-        ...resolved.ipv4,
-        ...resolved.ipv6.map((ip) => `[${ip}]`),
+        // hostName,
+        // 'www.speedtest.net',
+        // ...resolved.ipv4,
+        // ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(',') : [])
     ];
 
